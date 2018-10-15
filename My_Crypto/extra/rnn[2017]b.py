@@ -15,7 +15,7 @@ import matplotlib.pyplot as plt    # Used to visualise the results at the end
 import pandas as pd                # To import the dataset and manage them easily
 
 ## Importing the training set ##
-dataset_train = pd.read_csv('Google_Stock_Price_Train.csv') # Get the .csv file
+dataset_train = pd.read_csv('BTC[10_2018]_train.csv') # Get the .csv file
 training_set = dataset_train.iloc[:,1:2].values             # Get all lines in column 1
 
 ## Apply Feature Scaling ##
@@ -131,7 +131,7 @@ predicted_stock_price = sc.inverse_transform(predictions)
 """
 
 # Getting the real stock price of 2017 ##
-dataset_test = pd.read_csv('Google_Stock_Price_Test.csv')                               # Get the real stock price dataset 
+dataset_test = pd.read_csv('BTC[10_2018]_test.csv')                         # Get the real stock price dataset 
 real_stock_price = dataset_test.iloc[:,1:2].values                          # Get all the rows in column 1
 
 ## Get the predicted Price of 2018 ##
@@ -155,18 +155,18 @@ for i in range(60, 80):                                  # range is now 60 + 31 
 X_test = np.array(X_test)
 
 # Must be 3 dimensional according to the Keras input requirement
-X_test = np.reshape(X_train, (X_test.shape[0], X_test.shape[1], 1))## ValueError: cannot reshape array of size 64860 into shape (31,60,1)
+X_test = np.reshape(X_train, (X_test.shape[0], X_test.shape[1], 1))	## ValueError: cannot reshape array of size 64860 into shape (31,60,1)
 
 # 
-predicted_stock_price = regressor.predict(X_test)                               # give you the predicted price for month of Jan
-predicted_stock_price = sc.inverse_transform(predicted_stock_price)             # scale back to original price values
+predicted_stock_price = regressor.predict(X_test)                       # give you the predicted price for month of Jan
+predicted_stock_price = sc.inverse_transform(predicted_stock_price)     # scale back to original price values
 
 # Visualising the results ##
-plt.plot(real_stock_price, color = 'red', label = 'Real Google Stock Price')
-plt.plot(predicted_stock_price, color = 'blue', label = 'Predicted Google Stock Price')
-plt.title('Google Stock Price Prediction')
+plt.plot(real_stock_price, color = 'red', label = 'Real BTC Price')
+plt.plot(predicted_stock_price, color = 'blue', label = 'Predicted BTC Price')
+plt.title('BTC Price Prediction')
 plt.xlabel('Time')
-plt.ylabel('Google Stock Price')
+plt.ylabel('BTC Price')
 plt.legend()
 plt.show()
 
@@ -198,7 +198,7 @@ precent = rmse / 800
 ## Get the real Google Stock Price of 2012 - 2016 ##
 ####################################################
 ## Importing the training set ##
-real_stock_price_train = pd.read_csv('Google_Stock_Price_Train.csv') 
+real_stock_price_train = pd.read_csv('BTC[10_2018]_train.csv') 
 real_stock_price_train = real_stock_price_train.iloc[:,1:2].values
 
 
@@ -215,10 +215,10 @@ predicted_stock_price_train = sc.inverse_transform(predicted_stock_price_train)
 #############################
 ## Visualising the results ##
 #############################
-plt.plot(real_stock_price_train, color = 'red', label = 'Real Google Stock Price')
-plt.plot(predicted_stock_price_train, color = 'blue', label = 'Predicted Google Stock Price')
-plt.title('Google Stock Price Prediction')
+plt.plot(real_stock_price_train, color = 'red', label = 'Real BTC Price')
+plt.plot(predicted_stock_price_train, color = 'blue', label = 'Predicted BTC Price')
+plt.title('BTC Price Prediction')
 plt.xlabel('Time')
-plt.ylabel('Google Stock Price')
+plt.ylabel('BTC Price')
 plt.legend()
 plt.show()

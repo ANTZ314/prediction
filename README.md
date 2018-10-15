@@ -17,6 +17,13 @@ Orignal example from **udemy** using Google Stock Prices
 #### Homework
 ?
 
+#### My_Crypto
+rnn[2018].py - Working BTCUSD crypto predictor (backup files contain various versions)
+
+#### API
+api1.py - Downloads Yahoo Financial data and graphs it
+api2.py - 
+
 #### ML_BTC
 2x BTC market value '.csv' files in USD + **rnnQuick.py**
 
