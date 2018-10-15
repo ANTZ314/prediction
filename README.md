@@ -1,6 +1,6 @@
 # Crypto Price Prediction
 
-###Dependencies:
+### Dependencies:  
 
 * pandas
 * numpy
@@ -8,29 +8,34 @@
 * sklearn
 * keras
 
-####Docs
+[Quandl BTC API Codes](https://blog.quandl.com/api-for-bitcoin-data?utm_source=blog-quandl&utm_medium=organic&utm_campaign=&utm_content=(homepage))
+
+
+
+#### Docs  
 Various documents related to RNN's, LSTM's and stock prediction
 
 #### Google_Original
 Orignal example from **udemy** using Google Stock Prices
 
-#### Homework
-?
+#### Homework  
+RNN error calculation and accuracy analysis.
+Fine tuning algorithm 
 
-#### My_Crypto
+#### My_Crypto  
 rnn[2018].py - Working BTCUSD crypto predictor (backup files contain various versions)
 
-#### API
+#### API  
 api1.py - Downloads Yahoo Financial data and graphs it
 api2.py - 
 
-#### ML_BTC
+#### ML_BTC  
 2x BTC market value '.csv' files in USD + **rnnQuick.py**
 
-#### ML_Crypto
+#### ML_Crypto  
 Github prediction project **(untested)**
 
-#### My_Google
+#### My_Google  
 Tested on Google stock price and bitcoin opening price (edited from original - I think)
 
 #### My_BitCoin
