@@ -1,0 +1,3 @@
+BTC_USD Opening Price API:
+
+Date: 2018-10-22 - Opening price: 6412.62

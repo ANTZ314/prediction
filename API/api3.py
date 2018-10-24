@@ -28,7 +28,7 @@ def main():
 	data = ast.literal_eval(opening.decode("utf-8"))
 
 	# Use 'open' key to find opening price value
-	print(data['open'])
+	print("Opening price: " + data['open'])
 
 
 if __name__ == "__main__": main()
