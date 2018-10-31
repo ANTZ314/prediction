@@ -1,0 +1,8 @@
+BTC_USD Opening Price API:
+
+
+Date: 2018-10-31 - Opening: [[6269.45]] - Predicted: [[6206.5884]]
+Date: 2018-10-31 - Opening: [[6269.45]] - Predicted: [[6266.497]]
+Date: 2018-10-31 - Opening: [[6269.45]] - Predicted: [[6318.867]]
+Date: 2018-10-31 - Opening: [[6269.45]] - Predicted: [[6334.946]]
+Date: 2018-10-31 - Opening: [[6269.45]] - Predicted: [[6231.978]]

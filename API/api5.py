@@ -19,6 +19,9 @@ import csv
 
 
 def main():
+	exc = 'none'									# quick error code
+	fl_open = 0.1									# Float value to work with
+
 	try:
 		#start = datetime.datetime(2017,1,1)
 		today = datetime.date.today()
@@ -35,35 +38,30 @@ def main():
 		# Use 'open' key to find opening price value
 		print("Date: " + str(today))
 		print("Opening price: " + data['open'])
+		#print(type(data['open']))
+
+		#convert to float
+		fl_open = float(data['open'])
+		#print(type(fl_open))
+
 		try:
+			exc = 'Error: text file'
 			# If the file exists
 			file = open('open.txt', 'a+') 					# Open to read file
 			file.write("\nDate: " + str(today) + " - Opening: " + data['open']
 			 + " - High: " + data['high'] + " - Low: " + data['low'] + " - Close: " + data['last'])
-			#print("File writen to...")
+			print("File found and writen to...")
 			file.close()									# Close the file
 
+			exc = 'Error: writing to CSV'
 			with open(r'test.csv', 'a', newline='') as csvfile:
 			    fieldnames = ['Date','Open','High','Low','Close']
 			    writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 			    writer.writerow({'Date':today, 'Open':data['open'], 'High':data['high'], 'Low':data['low'], 'Close':data['last']})
 			    csvfile.close()
-			#print(data)
 
 		except:
-			# If the file didn't exist
-			file= open("open.txt","a+")						# Create & open the file, then Append data 
-			file.write("BTC_USD Opening Price API: \n\n")
-			file.write("\nDate: " + str(today) + " - Opening: " + data['open']
-			 + " - High: " + data['high'] + " - Low: " + data['low'] + " - Close: " + data['last'])
-			print("File created & written to...")
-			file.close()									# Exit the opened file
-
-			with open(r'test.csv', 'a', newline='') as csvfile:
-			    fieldnames = ['Date','Open','High','Low','Close']
-			    writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-			    writer.writerow({'Date':today, 'Open':data['open'], 'High':data['high'], 'Low':data['low'], 'Close':data['last']})
-			    csvfile.close()
+			print(exc)
 
 	except:
 		print("EXCEPTION REACHED WHILE RETRIVING DATA")

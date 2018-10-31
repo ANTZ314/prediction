@@ -1,24 +1,8 @@
 BTC_USD Opening Price API:
 
-Date: 2018-10-22 - Opening price: 6412.62
-Date: 2018-10-25 - Opening price: 6411.96
-Date: 2018-10-25 - Opening price: 6411.96BTC_USD Opening Price API: 
-
-
-Date: 2018-10-25 - Opening price: 6411.96
-Date: 2018-10-25 - Opening price: 6411.96
-Date: 2018-10-25 - Opening price: 6411.96BTC_USD Opening Price API: 
-
-
-Date: 2018-10-25 - Opening price: 6411.96
-Date: 2018-10-25 - Opening price: 6411.96BTC_USD Opening Price API: 
-
-
-Date: 2018-10-25 - Opening price: 6411.96
-Date: 2018-10-25 - Opening price: 6411.96
-Date: 2018-10-25 - Opening price: 6411.96
-Date: 2018-10-25 - Opening price: 6411.96
-Date: 2018-10-25 - Opening price: 6411.96
-Date: 2018-10-25 - Opening: 6411.96High6451.64Low: 6361.73Close: 6404.39
-Date: 2018-10-25 - Opening: 6411.96 - High6451.64 - Low: 6361.73 - Close: 6403.50
 Date: 2018-10-25 - Opening: 6411.96 - High: 6451.64 - Low: 6361.73 - Close: 6403.50
+Date: 2018-10-25 - Opening: 6411.96 - High: 6451.64 - Low: 6361.73 - Close: 6403.50
+Date: 2018-10-30 - Opening: 6266.47 - High: 6289.00 - Low: 6227.80 - Close: 6249.87
+Date: 2018-10-30 - Opening: 6266.47 - High: 6289.00 - Low: 6227.80 - Close: 6257.98
+Date: 2018-10-30 - Opening: 6266.47 - High: 6289.00 - Low: 6227.80 - Close: 6260.13
+Date: 2018-10-31 - Opening: 6269.45 - High: 6350.00 - Low: 6199.25 - Close: 6310.03
