@@ -116,25 +116,28 @@ print("Predicted Price: \t" + str(predicted_stock_price))
 ## Part 5 - Write the new results to text and csv file for tomorrow ##
 ######################################################################
 exc = "none"															# exception message
-# Write to file #
 try:
-	exc = 'Error: text file'
+	# Write to TEXT #
+	exc = 'text file'													# Ecxeption error message
 	# If the file exists
-	file = open('open.txt', 'a+') 										# Open to read file
+	file = open('open.txt', 'a+') 										# Open to write to file
 	file.write("\nDate: " + str(today) + " - Opening: [[" + str(real_stock_price) + "]]"
 	+ " - Predicted: " + str(predicted_stock_price))
 	file.close()														# Close the file
 
-	exc = 'Error: writing to CSV'
-	with open(r'BTCUSD.csv', 'a', newline='') as csvfile:
+	# Write to CSV #
+	exc = 'writing to CSV'												# Ecxeption error message
+	with open(r'BTCUSD.csv', 'a', newline='') as csvfile:				# open to write to file
 	    fieldnames = ['Date','Open','High','Low','Close']
 	    writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-	    writer.writerow({'Date':today, 'Open':data['open'], 'High':data['high'], 'Low':data['low'], 'Close':data['last']})
+	    writer.writerow({'Date':today, 'Open':data['open'], 'High':data['high'], 'Low':data['low'], 
+	    	'Close':data['last']})
 	    csvfile.close()
+	exc = "none"
 	print("\nComplete...\n")
 
 except:
-	print(exc)
+	print("Error: " + exc)
 
 ####################################################################
 ## Part 6 - Compare yesterday's Predicted Price with Todays Price ##

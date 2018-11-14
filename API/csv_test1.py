@@ -2,7 +2,7 @@
 """
 Description:
 Open csv file & Reads values from column 2
-Print the number of values, 
+Print the number of values (number of rows in col2)
 Append date and 'string' to last row of first 2 columns
 
 Note: Run in 'crypto' virtual environment  

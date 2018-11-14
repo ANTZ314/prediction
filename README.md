@@ -46,7 +46,13 @@ Fine tuning algorithm
 	* Checks for 'open.txt' file. If doesn't exist, creates it and writes to it.
 	* If it exists, appends new Opening value with date.
 * **api5.py** - All of the above and also appends entire dictionary content to csv file under correct columns
-* **csv_append.py** - Reads values from column 2, print number of values, append date and 'string' to last row of first 2 columns
+* **csv_test1.py** - Reads values from column 2, print number of values, append date and 'string' to last row of first 2 columns
+* **csv_test2.py**
+	* Gets number of rows in column 2 = size
+	* Prints specified cell according to [col, row] (Note: Cells start at [0, 0])
+	* Gets yesterdays Opening & Direction
+	* Indicates Y/N for direction correct
+	* Shows Error Rate from yesterday to todays Opening price
 
 ### ML_Crypto  
 Github prediction project **(untested)**
