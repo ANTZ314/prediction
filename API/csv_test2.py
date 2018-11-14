@@ -43,15 +43,18 @@ def get_size():
     return size
 
 def main():
-    Y_open = 0              # yesterdays predicted opening price
-    Y_direct = "UP"         # yesterdays predicted direction
-    Y_value = 0             # yesterdays float value
-    YN_direct = "X"         # Yes/No Correct prediction indicator
-    P_Error = 0             # Percent Error
+    YP_open = 0             # Yesterdays Predicted opening price    - [5,size]
+    YA_open = 0             # yesterdays Actual opening price       - [1,size]
+    Y_value = 0             # Yesterdays float value                
+
+    YP_direct = "UP"        # Yesterdays Predicted Direction        - [7,size]
+    YA_direct = "UP"        # Yesterdays Actual direction           - [8,size]
+    YN_direct = "X"         # Yes/No Correct prediction indicator   - Determined
+    P_Error = 0             # Percent Error                         - Calculated
 
     # test purposes
-    T_open = 6224           # todays actual opening price
-    T_direct = "DOWN"       # todays actual direction
+    T_open = 6224           # Todays Actual opening price (test)    - Retrieved today
+    T_direct = "DOWN"       # Todays actual direction     (test)    - Determined from todays price
 
 
     try:
@@ -60,8 +63,8 @@ def main():
         print("Number of Rows: " + str(size))
 
         # Read yesterdays Opening Price
-        Y_open = read_cell(1, (size))
-        print ("Yesterdays Opening: " + Y_open)
+        YP_open = read_cell(1, (size))
+        print ("Yesterdays Opening: " + YP_open)
 
         # Read yesterdays Direction
         Y_direct = read_cell(6, (size-1))
@@ -75,11 +78,13 @@ def main():
             YN_direct = "N"
             print("Correct: " + YN_direct)
 
-
         # convert to float
-        Y_value = float(Y_open)
+        Y_value = float(YP_open)
         P_Error = ((Y_value - T_open) / T_open) * 100
         print("Error %: " + str(P_Error)) 
+
+        # Check for actual direction
+
                     
     except:
         print("MAIN EXCEPTION REACHED")
