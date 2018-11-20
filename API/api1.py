@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 Description:
-Use 'fix_yahoo_finance' to retrieve Yahoo stock price and graph (general) data 
+Use 'fix_yahoo_finance' to retrieve Yahoo stock price and graph the closing Price 
 
 Use:
 python api1.py

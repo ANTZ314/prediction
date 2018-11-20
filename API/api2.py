@@ -24,8 +24,8 @@ def main():
 	print(data.head(3))				# first 3 data entries
 	print(data.tail(3))				# last 3 lines (check date and colum headings)
 	#data.Low.plot()				# 1st way: plot 'LOW' values
-	#plt.plot(data['Low'])		# 2nd way: plot 'LOW' values
-	plt.plot(data['High'])		# 
+	#plt.plot(data['Low'])			# 2nd way: plot 'LOW' values
+	plt.plot(data['High'])			# 
 	
 	# VISUALLISE #
 	plt.title('- Quandl Data Plotter -')

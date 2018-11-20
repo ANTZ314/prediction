@@ -6,6 +6,7 @@ Description:
 * Gets yesterdays Opening & Direction
 * Indicates Y/N for direction correct
 * Shows Error Rate from yesterday to todays Opening price
+* Write results to CSV file last row
 
 Note: Run in 'crypto' virtual environment for 'pandas'
 
@@ -19,14 +20,21 @@ import csv
 size = 0
 
 def read_cell(x, y):
-    with open('test.csv', 'r') as f:
-        reader = csv.reader(f)
+    with open('test.csv', 'r') as file:
+        reader = csv.reader(file)
         y_count = 0
         for n in reader:
             if y_count == y:
                 cell = n[x]
                 return cell
             y_count += 1
+
+def write_cell():
+    print("here")
+    with open('test.csv', 'w', newline='') as file:
+        writer = csv.writer(file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+        writer.writerow(['John Smith', 'Accounting', 'November'])
+
 
 def get_size():
     # get csv file
@@ -50,12 +58,12 @@ def main():
     YP_direct = "UP"        # Yesterdays Predicted Direction        - [7,size]
     YA_direct = "UP"        # Yesterdays Actual direction           - [8,size]
     YN_direct = "X"         # Yes/No Correct prediction indicator   - Determined
-    P_Error = 0             # Percent Error                         - Calculated
+    P_Error = 1.05          # Percent Error                         - Calculated
 
     # test purposes
-    T_open = 6224           # Todays Actual opening price (test)    - Retrieved today
-    T_direct = "DOWN"       # Todays actual direction     (test)    - Determined from todays price
-
+    T_value = 6224.35       # Todays Actual opening price (test)    - Retrieved today
+    T_direct = "down"       # Todays actual direction     (test)    - Determined from todays price
+    diff = 1.05
 
     try:
         # Get the number of rows in the csv
@@ -67,9 +75,21 @@ def main():
         print ("Yesterdays Opening: " + YP_open)
 
         # Read yesterdays Direction
-        Y_direct = read_cell(6, (size-1))
+        Y_direct = read_cell(7, (size))
         print ("Yesterdays Direction: " + Y_direct)
 
+        # Find todays direction
+        Y_value = float(YP_open)
+        #T_value = float(T_open)
+        diff = Y_value - T_value
+        if diff > 0:
+            T_direct = "down"
+        else:
+            T_direct = "up"
+
+        print("Todays Opening: " + str(T_value))
+        print("Todays Direct: " + T_direct)
+        
         # Predicted direction Correct?
         if Y_direct == T_direct:
             YN_direct = "Y"
@@ -78,13 +98,15 @@ def main():
             YN_direct = "N"
             print("Correct: " + YN_direct)
 
-        # convert to float
+        # convert to float for Error Rate
         Y_value = float(YP_open)
-        P_Error = ((Y_value - T_open) / T_open) * 100
-        print("Error %: " + str(P_Error)) 
+        P_Error = ((Y_value - T_value) / T_value) * 100
+        P_Error = format(P_Error, '.4f')
+        print("Error %: " + str(P_Error))
 
-        # Check for actual direction
-
+        # Write results back to CSV
+        #write_cell()
+        print("done")
                     
     except:
         print("MAIN EXCEPTION REACHED")
