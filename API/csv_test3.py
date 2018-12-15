@@ -39,8 +39,10 @@ def get_size():
 
 def main():
 	missing = 0
+	predicted_stock_price = "[[3652.22]]"
 
 	try:
+		"""
 		# Get the number of rows
 		size = get_size()									# Get the number of rows in the csv
 
@@ -66,7 +68,12 @@ def main():
 		while(missing >= 0):
 			print(str(missing))
 			missing -= 1
+		"""
 
+		T_Pred = str(predicted_stock_price)
+		T_Pred = T_Pred.strip("[]")
+
+		print ("Tomorrows Predicted Opening:\t" + T_Pred)
 
 	except:
 		print("MAIN EXCEPTION REACHED")

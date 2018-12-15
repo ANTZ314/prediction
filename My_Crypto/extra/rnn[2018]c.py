@@ -88,10 +88,6 @@ try:
 	# convert 'byte' to dictionary (strings)
 	data = ast.literal_eval(opening.decode("utf-8"))
 
-	# Use 'open' key to find opening price value
-	#print("Date: " + str(today))										# print todays date
-	#print("Opening Price: " + data['open'])							# Print todays opening value
-
 	#convert to float
 	fl_open = float(data['open'])										# Check: print(type(fl_open))
 except:
