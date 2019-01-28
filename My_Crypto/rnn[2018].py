@@ -70,8 +70,7 @@ def get_size():
     # get the number of values
     size = len(opening)
 
-    # print last open price
-    #print("last: " + str(opening[(size-1)]))
+    #print("last: " + str(opening[(size-1)]))					# Show last open price
 
     # Return the number of values
     return size
@@ -142,7 +141,6 @@ def main():
 	#############################################################
 	## Part 4 - Making the predictions using todays Open Price ##
 	#############################################################
-	
 	inputs = real_stock_price                                               # Use the 
 	inputs = sc.transform(inputs)                                           # Scale the inputs to match scale used for training
 	inputs = np.reshape(inputs, (1, 1, 1))                                  # Change to 3 dimensional array
@@ -172,22 +170,26 @@ def main():
 		size = get_size()
 		#print("Number of Rows: " + str(size))
 
-		# Read yesterdays Predicted Opening Price
+		# Read yesterdays Predicted Opening Price (Column F: ERROR IF NO VALUE)
 		YP_open = read_cell(5, (size))
 		#print("Yesterdays Opening:\t" + YP_open)
 
 		# Read yesterdays Direction
 		Y_direct = read_cell(7, (size))
 		#print("Yesterdays Predicted Direction:\t" + Y_direct)
-				
-		## Yesterday to Todays Direction
-		Y_value = float(YP_open)						# convert to float
-		diff = Y_value - real_stock_price
-		if diff > 0:
-			T_direct = "DOWN"
-		else:
-			T_direct = "UP"
+		
 
+		if YP_open == "none":
+			print("No predicted price found for yesterday...")
+		else:
+			## Yesterday to Todays Direction
+			Y_value = float(YP_open)						# convert to float
+			diff = Y_value - real_stock_price
+			if diff > 0:
+				T_direct = "DOWN"
+			else:
+				T_direct = "UP"
+		
 		## Today to Tomorrows Direction
 		diff = real_stock_price - predicted_stock_price
 		if diff > 0:
@@ -195,18 +197,24 @@ def main():
 		else:
 			Tom_dir = "UP"
 
-		# Predicted direction Correct?
-		if Y_direct == T_direct:
-			YN_direct = "Y"
-			print("Correct: " + YN_direct)
+		if YP_open == "none":
+			print("No direction found for yesterday...")
 		else:
-			YN_direct = "N"
+			# Predicted direction Correct?
+			if Y_direct == T_direct:
+				YN_direct = "Y"
+				#print("Correct: " + YN_direct)
+			else:
+				YN_direct = "N"
 
-		# Convert to float for Error Rate
-		Y_value = float(YP_open)
-		P_Error = ((Y_value - real_stock_price) / real_stock_price) * 100
-		P_Error = format(P_Error, '.4f')
-		#print("Error %: " + str(P_Error))
+		if YP_open == "none":
+			print("Error can't be calculated without yesterdays predicted value...")
+		else:
+			# Convert to float for Error Rate
+			Y_value = float(YP_open)
+			P_Error = ((Y_value - real_stock_price) / real_stock_price) * 100
+			P_Error = format(P_Error, '.4f')
+			#print("Error %: " + str(P_Error))
 
 		T_Pred = str(predicted_stock_price)
 		T_Pred = T_Pred.strip("[]")
@@ -217,10 +225,12 @@ def main():
 		print ("Todays Actual Open:\t\t" + str(real_stock_price))
 		print ("Error Rate:\t\t\t" + str(P_Error) + " %")
 		print ("Tomorrows Predicted Opening:\t" + T_Pred)
-		print ("\nTomorrows Predicted Direction:\t" + Tom_dir)
-		print ("\nYesterdays Predicted Direction:\t" + Y_direct)
+		print ("=================================\n")
+		print ("Yesterdays Predicted Direction:\t" + Y_direct)
 		print ("Todays Actual Direction:\t" + T_direct)
 		print ("Correct:\t\t\t" + YN_direct)
+		print ("=================================\n")
+		print ("Tomorrows Predicted Direction:\t" + Tom_dir)
 
 	except:
 		print ("Analytics Error!")
