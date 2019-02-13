@@ -8,10 +8,15 @@
 * sklearn
 * keras
 
+_virtual_env:_ workon crypto
+
 [Quandl BTC API Codes](https://blog.quandl.com/api-for-bitcoin-data?utm_source=blog-quandl&utm_medium=organic&utm_campaign=&utm_content=(homepage))
 
 [Get Bitcoin CSV Data](https://www.cryptodatadownload.com/)  
-**Note:** Have to remove column and flip data vertically to start with earliest date
+
+**Note:** 
+_Using Bitstamp data_ 
+---> Have to remove column and flip data vertically to start with earliest date
 
 ### Docs  
 Various documents related to RNN's, LSTM's and stock prediction
