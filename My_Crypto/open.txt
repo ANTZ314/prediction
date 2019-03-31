@@ -2,6 +2,16 @@
 BTC_USD Opening Price API:
 --------------------------
 
+------------------
+Missing Data Link:
+------------------
+https://www.cryptodatadownload.com/
+
+------------------
+Historical Data Link:
+------------------
+https://za.investing.com/crypto/bitcoin/btc-usd-historical-data?cid=49798
+
 ==================================================================
 Date: 2018-10-31 - Opening: [[6269.45]] - Predicted: [[6206.5884]]
 Date: 2018-10-31 - Opening: [[6269.45]] - Predicted: [[6231.978]]]
@@ -95,3 +105,10 @@ Date: 2019-03-06 - Opening: [[3844.07]] - Predicted: [[3850.3184]]
 Date: 2019-03-07 - Opening: [[3851.26]] - Predicted: [[3831.2737]]
 Date: 2019-03-11 - Opening: [[3898.14]] - Predicted: [[3902.0361]]
 Date: 2019-03-12 - Opening: [[3848.86]] - Predicted: [[3846.1196]]
+Date: 2019-03-14 - Opening: [[3848.1]] - Predicted: [[3855.6843]]
+Date: 2019-03-15 - Opening: [[3857.33]] - Predicted: [[3882.6555]]
+Date: 2019-03-18 - Opening: [[3965.63]] - Predicted: [[3928.4802]]
+Date: 2019-03-19 - Opening: [[3969.94]] - Predicted: [[3957.3591]]
+Date: 2019-03-20 - Opening: [[3999.5]] - Predicted: [[4020.6987]]
+Date: 2019-03-30 - Opening: [[4090.0]] - Predicted: [[4065.4087]]
+Date: 2019-03-31 - Opening: [[4094.92]] - Predicted: [[4080.3262]]
