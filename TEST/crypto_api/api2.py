@@ -1,12 +1,13 @@
 # -*- coding: utf-8 -*-
 """
 Description:
-Using Quandl to retrieve bitcoin (BITSTAMP) data and then graph the 'Low' values from that data
-Also prints first 3 lines of the data
+Using Quandl to retrieve bitcoin (BITSTAMP) data and then plot the 'Low' values from that data
+Also prints first 3 lines of the data, and last 3 lines of data.
 NOT THIS: Date | Open | High | Low | Close | Volume (BTC) | Volume (Currency) | Weighted Price
 THIS----> High | Low | Last | Bid | Ask | Volume | VWAP
 
-Note: Run in 'crypto' virtual environment  
+Note: 	Run in 'crypto' virtual environment  
+		'q' to quit
 
 Use:
 python api2.py

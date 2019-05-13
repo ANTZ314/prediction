@@ -12,15 +12,16 @@ python3 api3.py
 import datetime
 import requests
 import ast
+import quandl
 
 
 def main():
-	start = datetime.datetime(2017,1,1)
-	end = datetime.date.today()
+	#start = datetime.datetime(2017,1,1)
+	#end = datetime.date.today()
 
 	# Make URL data request for daily bitcoin data 
 	data = requests.get('https://www.bitstamp.net/api/v2/ticker/btcusd/')
-
+	
 	# Get byte format json content
 	opening = data.content					# Get the full data line retrieved
 

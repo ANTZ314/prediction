@@ -41,7 +41,7 @@ size = 0
 ## READ CSV CELLS ##
 ####################
 def read_cell(x, y):
-    with open('BTCUSD.csv', 'r') as file:
+    with open('TSLA.csv', 'r') as file:
         reader = csv.reader(file)
         y_count = 0
         for n in reader:
@@ -55,7 +55,7 @@ def read_cell(x, y):
 #########################
 def write_cell():
     print("here")
-    with open('BTCUSD.csv', 'w', newline='') as file:
+    with open('TSLA.csv', 'w', newline='') as file:
         writer = csv.writer(file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
         writer.writerow(['John Smith', 'Accounting', 'November'])
 
@@ -64,7 +64,7 @@ def write_cell():
 #########################
 def get_size():
     # get csv file
-    dataset = pd.read_csv('BTCUSD.csv')
+    dataset = pd.read_csv('TSLA.csv')
     # Get all values in column 2 (Open Price)
     opening = dataset.iloc[:,1:2].values
     # get the number of values
@@ -83,7 +83,7 @@ def main():
 	## Part 1 - Data Preprocessing ##
 	#################################
 	## Importing the training set ##
-	dataset_train = pd.read_csv('BTCUSD.csv') 					# Get the .csv file
+	dataset_train = pd.read_csv('TSLA.csv') 					# Get the .csv file
 	training_set = dataset_train.iloc[:,1:2].values     		# Get all values in column 2 (Open Price)
 	# get the number of values
 	train_size = len(training_set)								# print(str(size))
@@ -117,7 +117,7 @@ def main():
 	###########################################################
 	## Part 3 - Get todays 'Open' value & convert to Integer ##
 	###########################################################
-	print("Fetching todays BTCUSD data from Bitstamp...")
+	print("Fetching todays TSLA data from Bitstamp...")
 
 	try:
 		today = datetime.date.today()										# get todays date
@@ -251,7 +251,7 @@ def main():
 
 		# Write to CSV #
 		exc = 'writing to CSV'												# Ecxeption error message
-		with open(r'BTCUSD.csv', 'a', newline='') as csvfile:				# open to write to file
+		with open(r'TSLA.csv', 'a', newline='') as csvfile:				# open to write to file
 		    fieldnames = ['Date','Open','High','Low','Close','P_Open','Error','Pred_Dir','Act_Dir','Correct']
 		    writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 		    writer.writerow({'Date':today, 'Open':data['open'], 'High':data['high'], 'Low':data['low'], 
