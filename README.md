@@ -36,6 +36,15 @@ __Using Bitstamp data__
 ---
 ### stocks
 
+Quandl Key: EfVSTGzAz3sxDyyG2Tqm
+Aplhavantage Key: PBRGXKAUD9LKYI3Z
+
+**Note:** - Needed to sym-link alpha-vantage to virtualenv *crypto* to be able to import package:
+
+	cd ~/.virtualenvs/crypto/lib/python3.6/site-packages/
+	ln -s /usr/local/lib/python3.6/dist-packages/alpha_vantage alpha_vantage
+
+
 * **rnnQCOM.py** - Same basic functionality as the above Crypto version, with adaptations for Stock/Exchange currencies...
 * **rnnTSLA.py** - same as above but for Tesla
 

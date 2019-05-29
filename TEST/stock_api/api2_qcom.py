@@ -21,13 +21,13 @@ def main():
 	end = datetime.date.today()
 
 	## Stock ticker codes
-	#s = "MSFT" 		# Microsoft
-	#s = "QCOM" 		# Qualcomm
-	s = "TSLA"			# Tesla
-	#s = "AAPL"			# Apple
+	#tick = "MSFT" 		# Microsoft
+	#tick = "QCOM" 		# Qualcomm
+	tick = "TSLA"			# Tesla
+	#tick = "AAPL"			# Apple
 
 	#quandl.ApiConfig.api_key = "EfVSTGzAz3sxDyyG2Tqm"
-	data = quandl.get("WIKI/" + s, start_date=start, end_date=end, api_key="EfVSTGzAz3sxDyyG2Tqm")
+	data = quandl.get("WIKI/" + tick, start_date=start, end_date=end, api_key="EfVSTGzAz3sxDyyG2Tqm")
 	print(data.head(3))				# first 3 data entries
 	print(data.tail(3))				# last 3 lines (check date and colum headings)
 	#data.Low.plot()				# 1st way: plot 'LOW' values

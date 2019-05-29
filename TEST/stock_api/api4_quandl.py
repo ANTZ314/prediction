@@ -26,16 +26,19 @@ def main():
 
 	# Request the first 5 rows
 	data = quandl.get("WIKI/AAPL", rows=5)
+	print(data)
 
 	# Request specific columns of multiple stocks
-	data = quandl.get(["NSE/OIL.1", "WIKI/AAPL.4"])
+	#data = quandl.get(["NSE/OIL.1", "WIKI/AAPL.4"])
+	#print(data)
 	
 	# Request column 4 [Close] between now and 'start' date
 	data = quandl.get("WIKI/TSLA.4", start_date=start, end_date=end)
+	print(data)
 
 	# Use 'open' key to find opening price value
-	print(data)
-	print("\nDate today: " + str(end))
+	#print(data)
+	#print("\nDate today: " + str(end))
 
 
 if __name__ == "__main__": main()

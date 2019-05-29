@@ -2,6 +2,7 @@
 """
 Description:
 Python 2 code to extract stock market data from yahoo finance
+Parse the data to a json file
 
 Note: Run in 'crypto' virtual environment  
 

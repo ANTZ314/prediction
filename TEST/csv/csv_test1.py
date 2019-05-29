@@ -20,8 +20,10 @@ def main():
 		today = datetime.date.today()
 
 		try:
+			print("Read:")
 			# get csv file
-			dataset = pd.read_csv('BTC[10_2018]_train.csv')
+			#dataset = pd.read_csv('BTC[10_2018]_train.csv')
+			dataset = pd.read_csv('test.csv')
 
 			# Get all values in column 2 (Open Price)
 			opening = dataset.iloc[:,1:2].values     					
@@ -29,18 +31,22 @@ def main():
 			# get the number of values
 			size = len(opening)
 			#size = 3
-			print(str(size))
+			print("Rows: " + str(size))
 		except:
 				print("ERROR...1")
 
 		try:
-			with open(r'test.csv', 'a', newline='') as csvfile:
-			    fieldnames = ['Date','Open']
+			print("\nWrite:")
+
+			with open(r'test.csv', 'a') as csvfile:
+			    fieldnames = ['Date','Open','High','Low','Close','Vol1','Vol2']
 			    writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 
-			    writer.writerow({'Date':today, 'Open':'Open Price'})
+			    writer.writerow({'Date':today, 'Open':'00', 'High': '11','Low': '22','Close': '33','Vol1': '44','Vol2': '55'})
 			    csvfile.close()
 			    print(today)
+
+			print("Done...")
 		except:
 			print("ERROR...2")
 

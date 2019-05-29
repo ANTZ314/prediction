@@ -2,7 +2,8 @@
 """
 Description:
 * Gets number of rows in column 2 = size
-* Prints specified cell according to [col, row] (Note: Cells start at [0, 0])
+* Prints specified cell according to [col, row] 
+  (Note: Cells start at [0, 0])
 * Gets yesterdays Opening & Direction from csv
 * Indicates Y/N for direction correct
 * Shows Error Rate from yesterday to todays Opening price
@@ -30,7 +31,7 @@ def read_cell(x, y):
             y_count += 1
 
 def write_cell():
-    with open('test.csv', 'w', newline='') as file:
+    with open('test.csv', 'w') as file:
         writer = csv.writer(file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
         writer.writerow(['John Smith', 'Accounting', 'November'])
 
@@ -125,13 +126,13 @@ def main():
 
         # Write results back to CSV
         exc = 'writing to CSV'                                              # Ecxeption error message
-        with open(r'test.csv', 'a', newline='') as csvfile:                 # open to write to file
-            fieldnames = ['Date','Open','High','Low','Close', 'P_Open', 'Error', 'Pred_Dir', 'Act Dire', 'Correct']
+        with open(r'test.csv', 'a') as csvfile:                 # open to write to file
+            fieldnames = ['Date','Open','High','Low','Close', 'P_Open', 'Error', 'Pred_Dir', 'Act_Dir', 'Correct']
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
             
             writer.writerow({'Date':today, 'Open':T_StrVal, 'High':T_StrVal, 'Low':T_StrVal, 
                 'Close':T_StrVal, 'P_Open':T_StrPred, 'Error':str(P_Error), 'Pred_Dir':Tom_dir, 
-                'Act Dire':T_direct, 'Correct':YN_direct})
+                'Act_Dir':T_direct, 'Correct':YN_direct})
 
             csvfile.close()
         exc = "none"

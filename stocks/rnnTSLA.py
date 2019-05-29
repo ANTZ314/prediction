@@ -1,8 +1,8 @@
-
+# -*- coding: utf-8 -*-
 """
-#~~~~~~~~~~~~~~~~~~~~~~~~~~#
-# Recurrent Neural Network #
-#~~~~~~~~~~~~~~~~~~~~~~~~~~#
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# Recurrent Neural Network, Stock Market, Opening Price Prediction #
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 #~~~~~~~~~~~~~~~~~~~~#
 # Code Functionality #
 #~~~~~~~~~~~~~~~~~~~~#
@@ -10,16 +10,16 @@
 * Using the size of the column it trains the LSTM up to the last value stored			[x]
 * Make URL request (Bitstamp) for todays Bitcoin data (byte format)						[x]
 * Extracts the latest 'Open' value as the "real_stock_price" for the prediction method	[x]
-* Print predicted value to text file for comparison to tomorrows price (accuracy)		[-] 
-* Append Todays Data to last Row of CSV for tomorrows evaluation 						[-]
+* Print predicted value to text file for comparison to tomorrows price (accuracy)		[x] 
+* Append Todays Data to last Row of CSV for tomorrows evaluation 						[x]
 
 Note:
 VirtualEnv: workon crypto
 
 Dataset used BTCUSD from https://www.cryptodatadownload.com/ (Bitstamp)
 """
-
-
+# import stock_info module from Alph Vantage
+from alpha_vantage.timeseries import TimeSeries					# get time series data for opening stock price
 # Importing the libraries
 import numpy as np                								# To make the arrays. Only input allowed to NN (as apposed to data-frames)
 import matplotlib.pyplot as plt    								# Used to visualise the results at the end
@@ -79,6 +79,8 @@ def get_size():
 ## MAIN FUNCTION ##
 ###################
 def main():
+	ticker = "TSLA"												# Tickers:  AAPL  MSFT  TSLA  QCOM
+	
 	#################################
 	## Part 1 - Data Preprocessing ##
 	#################################
@@ -101,8 +103,7 @@ def main():
 	###############################
 	## Part 2 - Building the RNN ##
 	###############################
-	fl_open = 0.1															# Opening Price (float) extracted from todays API 
-
+	
 	## Initialising the RNN ##
 	regressor = Sequential()                								# Create object for RNN model in a sequence of layers
 	## Adding the input layer and the LSTM layer ##
@@ -117,24 +118,44 @@ def main():
 	###########################################################
 	## Part 3 - Get todays 'Open' value & convert to Integer ##
 	###########################################################
-	print("Fetching todays TSLA data from Bitstamp...")
+	fl_open = 0.1															# convert the open price from pandas to float
+	tail = 'string'		# string											# to get the tail data from the ticker
+	close1 = 0.1		# float
+	high1 = 0.1			# float
+	low1 = 0.1			# float
+
+	print('-'*50)
+	print("Fetching todays -" + ticker + "- OPEN price from Alpha Vantage:")
+	print('-'*35)
+
+	ts = TimeSeries(key='PBRGXKAUD9LKYI3Z', output_format='pandas')
+	data, meta_data = ts.get_intraday(symbol=ticker,interval='1min', outputsize='full')
+	print('\nTicker: ' + ticker)
 
 	try:
-		today = datetime.date.today()										# get todays date
+		tail = data.tail(1)						# get last line of json data
+		fl_open = tail['1. open']				# Extract OPEN price (with pandas index)
+		fl_open = float(fl_open)				# convert to float for calculations
+		high1 = tail['2. high']						# pandas float with index
+		high1 = float(high1)						# convert to float for calculations
+		low1 = tail['3. low']						# pandas float with index
+		low1 = float(low1)							# convert to float for calculations
+		close1 = tail['4. close']					# pandas float with index
+		close1 = float(close1)						# convert to float for calculations
 
-		# Make URL data request for daily bitcoin data 
-		data = requests.get('https://www.bitstamp.net/api/v2/ticker/btcusd/')	# Make URL data request
+		#fl_close = tail['4. close']				# Extract CLOSE price (with pandas index)
+		#fl_close = float(fl_close)					# convert to float for calculations
 
-		# Get byte format json content
-		opening = data.content												# Get the full data line retrieved ('byte' format)
-
-		# convert 'byte' to dictionary (strings)
-		data = ast.literal_eval(opening.decode("utf-8"))
-
-		#convert to float
-		fl_open = float(data['open'])										# Check: print(type(fl_open))
+		print("Open stock price: " + str(fl_open))
+		print("High stock price: "  + str(high1))
+		print("Low stock price: "   + str(low1))
+		print("Close stock price: " + str(close1))
 	except:
-		print("API/URL retrieval Error...")
+		fl_open = 555.33													# give random value to avoid further errors
+		high1 = 55.33													# give random value to avoid further errors
+		low1 = 55.33													# give random value to avoid further errors
+		close1 = 55.33													# give random value to avoid further errors
+		print('Failed to get and convert Opening Price...')
 
 	real_stock_price = fl_open												# todays Opening Price (float)
 
@@ -178,7 +199,6 @@ def main():
 		Y_direct = read_cell(7, (size))
 		#print("Yesterdays Predicted Direction:\t" + Y_direct)
 		
-
 		if YP_open == "none":
 			print("No predicted price found for yesterday...")
 		else:
@@ -208,7 +228,7 @@ def main():
 				YN_direct = "N"
 
 		if YP_open == "none":
-			print("Error can't be calculated without yesterdays predicted value...")
+			print("Error Rate requires previous prices...")
 		else:
 			# Convert to float for Error Rate
 			Y_value = float(YP_open)
@@ -218,19 +238,22 @@ def main():
 
 		T_Pred = str(predicted_stock_price)
 		T_Pred = T_Pred.strip("[]")
+		today   = datetime.date.today()
 
-		# PRINT OUT ALL VALUES TO THE CONSOLE
+		#####################################
+		# DISPLAY ALL VALUES TO THE CONSOLE #
+		#####################################
 		print ("\nDate: \t\t\t\t" + str(today))
 		print ("\nYesterdays Predicted Open:\t" + str(YP_open))
-		print ("Todays Actual Open:\t\t" + str(real_stock_price))
+		print ("Todays realtime price:\t\t%.2f" % real_stock_price)
 		print ("Error Rate:\t\t\t" + str(P_Error) + " %")
 		print ("Tomorrows Predicted Opening:\t" + T_Pred)
+		print ("Tomorrows Predicted Direction:\t" + Tom_dir)
 		print ("=================================\n")
 		print ("Yesterdays Predicted Direction:\t" + Y_direct)
 		print ("Todays Actual Direction:\t" + T_direct)
 		print ("Correct:\t\t\t" + YN_direct)
 		print ("=================================\n")
-		print ("Tomorrows Predicted Direction:\t" + Tom_dir)
 
 	except:
 		print ("Analytics Error!")
@@ -244,30 +267,28 @@ def main():
 		# Write to TEXT #
 		exc = 'text file'													# Ecxeption error message
 		# If the file exists
-		file = open('open.txt', 'a+') 										# Open to write to file
+		file = open('openT.txt', 'a+') 										# Open to write to file
 		file.write("\nDate: " + str(today) + " - Opening: [[" + str(real_stock_price) + "]]"
 		+ " - Predicted: " + str(predicted_stock_price))
 		file.close()														# Close the file
+		print("Text File Complete...")
 
 		# Write to CSV #
 		exc = 'writing to CSV'												# Ecxeption error message
-		with open(r'TSLA.csv', 'a', newline='') as csvfile:				# open to write to file
+		with open(r'TSLA.csv', 'a') as csvfile:					# open to write to file
 		    fieldnames = ['Date','Open','High','Low','Close','P_Open','Error','Pred_Dir','Act_Dir','Correct']
 		    writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-		    writer.writerow({'Date':today, 'Open':data['open'], 'High':data['high'], 'Low':data['low'], 
-		    	'Close':data['last'],'P_Open':str(T_Pred), 'Error':str(P_Error), 
+		    
+		    writer.writerow({'Date':today, 'Open':real_stock_price, 'High':high1, 'Low':low1, 
+		    	'Close':close1,'P_Open':str(T_Pred), 'Error':str(P_Error), 
 		    	'Pred_Dir':Tom_dir, 'Act_Dir':T_direct, 'Correct':YN_direct})
+
 		    csvfile.close()
 		exc = "none"
-		print("\nComplete...\n")
+		print("\nCSV File Complete...\n")
 
 	except:
 		print("Error: " + exc)
-	
-	####################################################################
-	## Part 6 - Compare yesterday's Predicted Price with Todays Price ##
-	####################################################################
-	# Accuracy
 
 
 if __name__ == "__main__": main()
