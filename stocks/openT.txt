@@ -11,3 +11,7 @@ Historical Data Link:
 
 Date: 2019-05-21 - Opening: [[78.003]] - Predicted: [[77.97486]]
 Date: 2019-05-22 - Opening: [[68.665]] - Predicted: [[68.85778]]
+Date: 2019-06-03 - Opening: [[177.3]] - Predicted: [[177.31638]]
+Date: 2019-06-05 - Opening: [[193.75]] - Predicted: [[193.61154]]
+Date: 2019-06-06 - Opening: [[205.78]] - Predicted: [[205.3283]]
+Date: 2019-06-07 - Opening: [[208.765]] - Predicted: [[208.67587]]

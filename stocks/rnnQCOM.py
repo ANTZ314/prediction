@@ -125,9 +125,9 @@ def main():
 	high1 = 0.1			# float
 	low1 = 0.1			# float
 	
-	print('-'*50)
+	print('-'*53)
 	print("Fetching todays -" + ticker + "- OPEN price from Alpha Vantage:")
-	print('-'*50)
+	print('-'*53)
 
 	ts = TimeSeries(key='PBRGXKAUD9LKYI3Z', output_format='pandas')
 	data, meta_data = ts.get_intraday(symbol=ticker,interval='1min', outputsize='full')
@@ -251,11 +251,13 @@ def main():
 		print ("Error Rate:\t\t\t" + str(P_Error) + " %")
 		print ("Tomorrows Predicted Opening:\t" + T_Pred)
 		print ("Tomorrows Predicted Direction:\t" + Tom_dir)
-		print ("=================================\n")
+		print ("*"*35)
+		print ("\n")
 		print ("Yesterdays Predicted Direction:\t" + Y_direct)
 		print ("Todays Actual Direction:\t" + T_direct)
 		print ("Correct:\t\t\t" + YN_direct)
-		print ("=================================\n")
+		print ("*"*35)
+		print ("\n")
 
 	except:
 		print ("Analytical Error!")
@@ -287,7 +289,7 @@ def main():
 
 		    csvfile.close()
 		exc = "none"
-		print("\nCSV File Complete...\n")
+		print("CSV File Complete...\n")
 
 	except:
 		print("ERROR: " + exc)
