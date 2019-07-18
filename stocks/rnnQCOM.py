@@ -246,8 +246,8 @@ def main():
 		# DISPLAY ALL VALUES TO THE CONSOLE #
 		#####################################
 		print ("\nDate: \t\t\t\t" + str(today))
-		print ("\nYesterdays Predicted Open:\t" + str(YP_open))
-		print ("Todays realtime price:\t\t%.2f" % real_stock_price)
+		print ("\nPreviously Predicted Open:\t" + str(YP_open))
+		print ("Todays Open Price:\t\t%.2f" % real_stock_price)
 		print ("Error Rate:\t\t\t" + str(P_Error) + " %")
 		print ("Tomorrows Predicted Opening:\t" + T_Pred)
 		print ("Tomorrows Predicted Direction:\t" + Tom_dir)
