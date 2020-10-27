@@ -55,7 +55,7 @@ Aplhavantage Key: PBRGXKAUD9LKYI3Z
 ---
 ### TEST
 
-#### crypto_api:
+#### api_crypto:
 *Various API's to retrieve crypto data*
 
 * **api1.py** - Downloads Yahoo Financial data and graphs it  
@@ -67,19 +67,7 @@ Aplhavantage Key: PBRGXKAUD9LKYI3Z
 	* If it exists, appends new Opening value with date.
 * **api5.py** - All of the above and also appends entire dictionary content to csv file under correct columns
 
-#### csv:
-*Various CSV file control testing*
-
-* **csv_test1.py** - Reads values from column 2, print number of values, append date and 'string' to last row of first 2 columns
-* **csv_test2.py**
-	* Gets number of rows in column 2 = size
-	* Prints specified cell according to [col, row] (Note: Cells start at [0, 0])
-	* Gets yesterdays Opening & Direction
-	* Indicates Y/N for direction correct
-	* Shows Error Rate from yesterday to todays Opening price
-* **csv_test3.py** - not sure?
-
-#### stock_api:
+#### api_stock:
 *Various API's to retrieve stock data*
 
 * **api1_yahoo.py** - Using Yahoo API to request for Qualcomm/Tesla stock data (*Discontinued*)
@@ -97,14 +85,30 @@ Aplhavantage Key: PBRGXKAUD9LKYI3Z
 * **api6_quandl.py**
 	* Using *yahoo_fin* package to fetch financial data, extract opening price
 	* NOT FETCHING TODAYS DATA, ONLY 2 DAYS AGO???
+
+
+#### csv:
+*Various CSV file control testing*
+
+* **csv_test1.py** - Reads values from column 2, print number of values, append date and 'string' to last row of first 2 columns
+* **csv_test2.py**
+	* Gets number of rows in column 2 = size
+	* Prints specified cell according to [col, row] (Note: Cells start at [0, 0])
+	* Gets yesterdays Opening & Direction
+	* Indicates Y/N for direction correct
+	* Shows Error Rate from yesterday to todays Opening price
+* **csv_test3.py** - not sure?
+
 ---
 ### ML_Crypto  
 Github prediction project **(untested)**
 
 ### My_Google  
+**Deleted??**
 Tested on Google stock price and bitcoin opening price (edited from original - I think)
 
-### My_BitCoin
+### My_BitCoin  
+**Deleted??**
 **Edited and tested** - rnn.py example from **udemy** using BTCUSD Test and Training set + post processing graphic visualisation  
 3 differnt versions of the actual RNN (best version: **rnn.py?**)
 
