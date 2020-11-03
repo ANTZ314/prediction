@@ -1,0 +1,26 @@
+============================
+Changes & Additions to made:
+============================
+
+Select 3 primary stocks
+	->
+	->
+	-> 
+Find & Update all databases
+
+-----
+CODE:
+-----
+Got		- Yesterday's prediction = yest_pred
+Get 	- Today's opening price = tod_open
+Calc	- Tomorrows prediction = tom_pred
+
+Compare
+	-> yest_pred : tod_open = correct  	(yes/no)
+	-> tod_open  : tom_pred = decision	(buy/sell)
+
+Determine buy/sell suggestion was correct for each day.
+
+Further:
+	How to used in Application?
+	Tkinter App on Ubuntu? 

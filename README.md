@@ -53,7 +53,7 @@ Aplhavantage Key: PBRGXKAUD9LKYI3Z
 * [AlphVantage](https://www.alphavantage.co/documentation/)
 
 ---
-### TEST
+### test
 
 #### api_crypto:
 *Various API's to retrieve crypto data*
@@ -103,17 +103,8 @@ Aplhavantage Key: PBRGXKAUD9LKYI3Z
 ### ML_Crypto  
 Github prediction project **(untested)**
 
-### My_Google  
-**Deleted??**
-Tested on Google stock price and bitcoin opening price (edited from original - I think)
-
-### My_BitCoin  
-**Deleted??**
-**Edited and tested** - rnn.py example from **udemy** using BTCUSD Test and Training set + post processing graphic visualisation  
-3 differnt versions of the actual RNN (best version: **rnn.py?**)
-
-_______________________________________
-#### Additional Notes:
+---
+### Additional Notes:
 
 __Flip_Data_Columns:__
 
@@ -127,3 +118,13 @@ __Useful Stock Tickers:__
 * QCOM - Qualcomm
 * TSLA - Tesla
 * AAPL - Apple
+
+---
+### Possibly Removed Folders??
+
+#### My_Google  
+Tested on Google stock price and bitcoin opening price (edited from original - I think)
+
+#### My_BitCoin  
+**Edited and tested** - rnn.py example from **udemy** using BTCUSD Test and Training set + post processing graphic visualisation  
+3 differnt versions of the actual RNN (best version: **rnn.py?**)
