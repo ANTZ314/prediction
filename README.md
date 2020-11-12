@@ -6,6 +6,7 @@
 * numpy
 * matplotlib
 * sklearn
+* tensorflow
 * keras
 
 **Note:**

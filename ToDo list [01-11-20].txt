@@ -2,6 +2,13 @@
 Changes & Additions to made:
 ============================
 
+Install all required packages to the (ml) virtualenv:
+	-> numpy
+	-> matplotlib
+	-> Pandas
+	-> Tensorflow
+	-> Keras
+
 Select 3 primary stocks
 	->
 	->
