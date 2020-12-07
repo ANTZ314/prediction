@@ -1,0 +1,75 @@
+============================
+Changes & Additions to made:
+============================
+
+--------------------------------------------------------------------------------------
+Install all required packages to the (ml) virtualenv:
+--------------------------------------------------------------------------------------
+	-> numpy							|x|
+	-> matplotlib						|x|
+	-> Pandas							|x|
+	-> Tensorflow						|x|
+	-> Keras							|x|
+	-> sklearn							|x|
+	-> alpha_vantage					|x|
+
+
+--------------------------------------------------------------------------------------
+Select 3 primary stocks:
+--------------------------------------------------------------------------------------
+Selected Tickers:
+	-> TSLA			- Tesla				|x|
+	-> QCOM			- Qualcom			|x|
+	-> MSFT			- Microsoft			|.|
+	-> FB			- Netflix Inc		|.|
+	-> NFLX			- Amazon Inc		|.|
+	-> AMZN			- Apple Inc			|.|
+	-> GOOG			- Alphabet Inc		|.|
+
+Find historical data:
+	-> TSLA								|x|
+	-> QCOM								|x|
+ 	-> MSFT								|.|
+
+Update existing databases:
+	-> TSLA								|x|
+	-> QCOM								|x|
+ 	-> MSFT								|.|
+
+
+
+--------------------------------------------------------------------------------------
+FUNCTIONAL OVERVIEW:
+--------------------------------------------------------------------------------------
+Got			- Yesterday's prediction 	= yest_pred
+Get 		- Today's opening price 	= tod_open
+Calc		- Tomorrows prediction 		= tom_pred
+
+Compare:
+			- yest_pred : tod_open = correct  	(yes/no)
+			- tod_open  : tom_pred = decision	(buy/sell)
+
+Determine buy/sell suggestion was correct for each day.
+
+
+--------------------------------------------------------------------------------------
+CODE CHANGES:
+--------------------------------------------------------------------------------------
+
+Check last data entry date 											|.|
+
+Retrieve each entry up to current date (Fill Gaps)					|.|
+
+Calculate tomorrows prediction										|.|
+
+Check yesterday's prediction was correct? (Y/N)						|.|
+
+From today's opening to tomorrows opening -> buy/sell suggestion	|.|
+
+
+--------------------------------------------------------------------------------------
+Further:
+--------------------------------------------------------------------------------------
+	How to used in Application?
+	Tkinter App on Ubuntu? 
+

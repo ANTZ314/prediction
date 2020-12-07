@@ -77,7 +77,6 @@ def get_size():
 def main():
 	ticker = "TSLA"												# Tickers:  AAPL  MSFT  TSLA  QCOM
 	
-
 	#################################
 	## Part 1 - Data Preprocessing ##
 	#################################
@@ -97,11 +96,10 @@ def main():
 	## Reshaping ##
 	X_train = np.reshape(X_train, ((train_size-1), 1, 1))
 
-
 	###############################
 	## Part 2 - Building the RNN ##
 	###############################
-	"""
+	
 	## Initialising the RNN ##
 	regressor = Sequential()                								# Create object for RNN model in a sequence of layers
 	## Adding the input layer and the LSTM layer ##
@@ -112,13 +110,12 @@ def main():
 	regressor.compile(optimizer = 'adam', loss = 'mean_squared_error')
 	## Fitting the RNN to the Training set ##
 	regressor.fit(X_train, y_train, batch_size = 32, epochs = 200)
-	"""
-
+	
 	###########################################################
 	## Part 3 - Get todays 'Open' value & convert to Integer ##
 	###########################################################
-	fl_open = 0.1															# convert the open price from pandas to float
-	tail 	= 'string'		# string										# to get the tail data from the ticker
+	fl_open = 0.1													# convert the open price from pandas to float
+	tail 	= 'string'		# string								# to get the tail data from the ticker
 	close1 	= 0.1			# float
 	high1 	= 0.1			# float
 	low1 	= 0.1			# float
@@ -129,7 +126,7 @@ def main():
 
 	ts = TimeSeries(key='PBRGXKAUD9LKYI3Z', output_format='pandas')
 	data, meta_data = ts.get_intraday(symbol=ticker,interval='1min', outputsize='full')
-	#print('\nTicker: ' + ticker)
+	print('\nTicker: ' + ticker)
 
 	try:
 		tail 	= data.tail(1)							# get last line of json data
@@ -145,7 +142,6 @@ def main():
 		#fl_close = tail['4. close']					# Extract CLOSE price (with pandas index)
 		#fl_close = float(fl_close)						# convert to float for calculations
 
-		print("  ~~  ~~ Todays Values ~~  ~~")
 		print("Open stock price:  " + str(fl_open))
 		print("High stock price:  " + str(high1))
 		print("Low stock price:   " + str(low1))
@@ -159,30 +155,27 @@ def main():
 
 	real_stock_price = fl_open												# todays Opening Price (float)
 
-
 	#############################################################
 	## Part 4 - Making the predictions using todays Open Price ##
 	#############################################################
 	inputs = real_stock_price                                               # Use the 
 	
 	## REMOVED DUE TO TRANSFORM ERROR - [12-2020] ##
-	inputs = sc.transform(inputs)                                           # Scale the inputs to match scale used for training
+	#inputs = sc.transform(inputs)                                           # Scale the inputs to match scale used for training
+	print("\nINPUT: {}  <-- reshape error??".format(inputs))				# ??
+
 	inputs = np.reshape(inputs, (1, 1, 1))                                  # Change to 3 dimensional array
 	predicted_stock_price = regressor.predict(inputs)                       # give you the predicted price for that month
 	predicted_stock_price = sc.inverse_transform(predicted_stock_price)     # scale back to original price values
 
-
-	## View Data: (REMOVE) ##
-	print("\nDate: \t\t\t[[" + str(today) + "]]")
-	print("Opening Price: \t\t[[" + str(real_stock_price) + "]]")			# Print value
-	predicted_stock_price = format(predicted_stock_price, '.2f')			# Round to 2 decimal
-	print("Predicted Price: \t" + str(predicted_stock_price))				# Print value
+	#print("\nDate: \t\t\t[[" + str(today) + "]]")
+	#print("Opening Price: \t\t[[" + str(real_stock_price) + "]]")			# Print value
+	#predicted_stock_price = format(predicted_stock_price, '.2f')			# Round to 2 decimal
+	#print("Predicted Price: \t" + str(predicted_stock_price))				# Print value
 	
-
 	###################################################
 	## Part 5 - Analyse Predictions vs Actual Values ##
 	###################################################
-	
 	YP_open  = 0             		# Yesterdays Predicted opening price    - [5,size]
 	Y_direct = "none"				# Yesterdays Predicted Direction		- [7,size]
 	T_Pred   = "none"				# Tomorrows Predicted Price
@@ -194,6 +187,8 @@ def main():
 	P_Error  = 1.11          		# Percent Error                         - Calculated
 
 	try:
+		print("HERE...?")
+
 		# Get the number of rows in the csv
 		size = get_size()
 		#print("Number of Rows: " + str(size))
@@ -246,7 +241,6 @@ def main():
 		T_Pred = str(predicted_stock_price)
 		T_Pred = T_Pred.strip("[]")
 		today   = datetime.date.today()
-
 
 		#####################################
 		# DISPLAY ALL VALUES TO THE CONSOLE #
@@ -317,6 +311,6 @@ def main():
 
 	except:
 		print("Error: " + exc)
-	
+
 
 if __name__ == "__main__": main()
