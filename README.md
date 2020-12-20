@@ -2,15 +2,18 @@
 
 ## Dependencies:  
 
+* theano
 * pandas
 * numpy
 * matplotlib
 * sklearn
+* scikit-learn
 * tensorflow
 * keras
 
-**Note:**
+**Notes:**
 
+* Primary installs listed at the end of this file 
 *  All historical data columns need to be flipped vertically to start with earliest date, down to latest date (how to flip at end of doc)
 * _virtual_env:_ workon crypto
 
@@ -151,3 +154,22 @@ Tested on Google stock price and bitcoin opening price (edited from original - I
 #### My_BitCoin  
 **Edited and tested** - rnn.py example from **udemy** using BTCUSD Test and Training set + post processing graphic visualisation  
 3 differnt versions of the actual RNN (best version: **rnn.py?**)
+
+###Dependenies to pip3 install:
+
+ Package | Sub-Packages | Version (2017) | Version (2020)
+ ----------- |:-----------------:| ------------------- | -------------------
+ theano |  			| 0.8.2		| 0.9.0
+	 | six  			| 1.9.0		| 1.9.0
+	 | scipy  			| 0.11		| 0.14
+	 |  numpy  		| 1.7.1 		| 1.9.1
+tensorflow  | 			| 1.0.0 		| 1.2.1
+	 | six  			| 1.10.0		| 1.10.0
+	 |  wheel  			| 0.26		| 0.26
+	 |  setuptools		| setuptools	| xx
+keras |  				| 2.0.1		| 2.0.6
+	|  theano			| xx |
+	|  pyyaml			| xx |
+	|  six			| xx |
+	|  numpy			| xx |
+	|  scipy			| xx |
