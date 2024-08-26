@@ -2,6 +2,13 @@
 Changes & Additions to made:
 ============================
 
+NOTE:
+-----
+To convert Male/Female Sex to numeric:
+
+	train['Sex'] = train['Sex'].apply(lambda x: 1 if x == 'male' else 2)
+
+
 --------------------------------------------------------------------------------------
 Install all required packages to the (ml) virtualenv:
 --------------------------------------------------------------------------------------
